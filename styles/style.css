@@ -6,25 +6,35 @@ body{
     margin: auto;
 }
 
-.board{
+[data-cell]{
+    border: 1px solid black;
+    font-size: 5em;
+    height: auto;
+}
+
+[data-whole]{
+    position: relative;
+}
+
+[data-container]{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     z-index: -1;
 }
 
-[data-cell]{
-    background-color: red;
-    border: 1px solid white;
-    font-size: 5em;
-    height: auto;
+[data-board]{
+    margin-top: 20vh;
 }
 
 .overlay{
     width:100vw;
     height:100vh;
-    background-color: aqua;
     display: grid;
     align-items: center;
-    justify-content: center;
-    
+    justify-content: center; 
+    background: rgba(56, 87, 88, 0.507);
 }
 
 .chooseplayer{
@@ -32,14 +42,32 @@ body{
     grid-template-columns: auto auto;
     align-items: center;
     justify-content: center;
-    border: 1px solid black;
     font-size: 5vw;
+    background: rgb(228, 254, 255);
+    padding: 10px;
+
+}
+
+.head{
+    padding: 20px;
 }
 
 .player{
     display: grid;
     align-items: center;
     justify-content: center;   
+}
+
+.player > button{
+    width: 10vw;
+    height: auto;
+    border: none;
+    background-color: rgb(49, 172, 59);
+    color: white;
+}
+
+.player > button:hover{
+    background-color: rgb(45, 132, 138);
 }
 .head{
     grid-column: 1 / span 2;
