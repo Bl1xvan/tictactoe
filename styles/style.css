@@ -29,23 +29,37 @@ body{
 }
 
 #overlay{
+    display: grid;
+}
+
+#judgement{
+    display: none;
+}
+
+#overlay, #judgement{
     width:100vw;
     height:100vh;
-    display: grid;
     align-items: center;
     justify-content: center; 
     background: rgba(56, 87, 88, 0.507);
 }
 
-.chooseplayer{
+.chooseplayer, .finishplayer{
     display: grid;
-    grid-template-columns: auto auto;
     align-items: center;
     justify-content: center;
     font-size: 5vw;
     background: rgb(228, 254, 255);
     padding: 10px;
 
+}
+
+.chooseplayer{
+    grid-template-columns: auto auto;
+}
+
+.finishplayer{
+    grid-template-columns: auto;
 }
 
 .head{
