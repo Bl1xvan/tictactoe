@@ -6,32 +6,26 @@ const overlay = document.getElementById("overlay");
 const replaybtn = document.getElementById("replaybtn");
 let currentPlayer
 let chosenPlayer
-let tries = 9;
+let tries
 plyrbtns.forEach(choosePlayer);
 cellNumbers.forEach(fillCell)
 
-////Final Function. Make the replay button bring the players back. Set tries back to nine and empty the squares
 
-replaybtn.addEventListener("click", function(){
-    tries = 9;
-    for(let i=0; i<=cellNumbers.length; i++){
-        cellNumbers[i].innerText = null;
-    }
-    overlay.style.display= "grid";
-})
 function choosePlayer(plyrbtn, key){
     plyrbtn.addEventListener("click", function(){
         chosenPlayer = key;
         overlay.style.display="none";
+        tries = 9;
     }) 
 }
-
 
 function fillCell(cellNumber){
     cellNumber.addEventListener("click", function() {
         currentPlayer = plyrbtns[chosenPlayer].innerText;
-        cellNumber.innerText = currentPlayer;
-        tries--
+        if(cellNumber.innerText === ""){
+            cellNumber.innerText = currentPlayer;
+            tries--
+        }
         plyrbtns.reverse();
         if(checkWin(currentPlayer)){
             judgement.style.display = "grid";
@@ -41,8 +35,8 @@ function fillCell(cellNumber){
             judgement.style.display = "grid";
             messagehead.innerText = "Draw!"; 
         }
-    }, {once:true})
-    }
+    })
+}
 
 const WINNING_COMBINATIONS = [
     [0, 1, 2], [3, 4, 5],
@@ -59,7 +53,16 @@ function checkWin(player){
     })
 }
 
+replaybtn.addEventListener("click", function(){
+    tries = 9;
+    judgement.style.display= "none";
+    overlay.style.display= "grid";
+    cellNumbers.forEach(emptyCell);
+});
 
+function emptyCell(emptied){
+    emptied.innerText = " ";
+}
 
 
 
