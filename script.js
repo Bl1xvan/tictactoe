@@ -4,37 +4,39 @@ const messagehead = document.getElementById("messagehead");
 const judgement = document.getElementById("judgement");
 const overlay = document.getElementById("overlay");
 const replaybtn = document.getElementById("replaybtn");
-let currentPlayer
+
 let chosenPlayer
 let tries
 plyrbtns.forEach(choosePlayer);
 cellNumbers.forEach(fillCell)
 
-
-function choosePlayer(plyrbtn, key){
+function choosePlayer(plyrbtn, index){
     plyrbtn.addEventListener("click", function(){
-        chosenPlayer = key;
+        chosenPlayer = index;
         overlay.style.display="none";
         tries = 9;
     }) 
 }
-
 function fillCell(cellNumber){
     cellNumber.addEventListener("click", function() {
-        currentPlayer = plyrbtns[chosenPlayer].innerText;
+        let currentPlayer = plyrbtns[chosenPlayer].innerText;
         if(cellNumber.innerText === ""){
             cellNumber.innerText = currentPlayer;
-            tries--
+            tries--     
+            plyrbtns.reverse();
         }
-        plyrbtns.reverse();
         if(checkWin(currentPlayer)){
             judgement.style.display = "grid";
             messagehead.innerText = currentPlayer + " is the winner!"; 
+            plyrbtns.sort();
         }
         if(tries == 0){
             judgement.style.display = "grid";
             messagehead.innerText = "Draw!"; 
         }
+        
+        console.log(plyrbtns[1].innerText);
+        
     })
 }
 
@@ -54,17 +56,18 @@ function checkWin(player){
 }
 
 replaybtn.addEventListener("click", function(){
-    tries = 9;
     judgement.style.display= "none";
     overlay.style.display= "grid";
     cellNumbers.forEach(emptyCell);
+    plyrbtns.reverse();
+    tries = 0;
 });
 
 function emptyCell(emptied){
     emptied.innerText = " ";
+
 }
 
 
-
-
-
+///Switch the buttons back to defualt positions when game ends
+///Must be in reverse alphabetical order
