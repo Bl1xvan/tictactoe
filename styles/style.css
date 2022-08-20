@@ -79,7 +79,7 @@ body{
 }
 
 .cell{
-  background-color: #ccddff;
+  background-color: #bacbee;
   aspect-ratio: 1;
   position: relative;
 }
@@ -95,7 +95,7 @@ body{
 }
 
 .cell.brighter{
-  background-color: #c2e4ff;
+  background-color: #aec4d6;
 }
 
 .lgfont{

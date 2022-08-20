@@ -25,28 +25,30 @@ function fillCell(cellNumber){
         let currentPlayer = plyrbtns[chosenPlayer].innerText;
         if(cellNumber.firstChild.innerText === ""){
             cellNumber.firstChild.innerText = currentPlayer; 
-            tries--     
-            
+            tries--       
         }
-        if(currentPlayer === "X"){
-          footer.innerText = "O's Turn"
-        }
-        if(currentPlayer === "O"){
-          footer.innerText = "X's Turn"
-        }
+        swapTurns(currentPlayer)
         if(checkWin(currentPlayer)){
             judgement.style.display = "grid";
             messagehead.innerText = currentPlayer + " is the winner!";
             footer.innerText = "";
         }
-        if(tries == 0){
+        checkDraw()
+        plyrbtns.reverse();
+
+    })
+}
+
+function swapTurns(player){
+  player === "X" ? footer.innerText = "O's Turn" : footer.innerText = "X's Turn"
+}
+
+function checkDraw(){
+    if(tries == 0){
             judgement.style.display = "grid";
             messagehead.innerText = "Draw!"; 
             footer.innerText = "";
-        } 
-        plyrbtns.reverse();
-        console.log(plyrbtns[0].innerText, plyrbtns[1].innerText);
-    })
+    } 
 }
 
 ///sort or reverse letters based on tries!
@@ -67,9 +69,7 @@ function checkWin(player){
 
 replaybtn.addEventListener("click", function(){
     if(plyrbtns[0].innerText === "X"){
-      console.log("reverse")
       plyrbtns.reverse();
-      console.log(plyrbtns[0].innerText, plyrbtns[1].innerText);
     }
     judgement.style.display= "none";
     overlay.style.display= "grid";
