@@ -7,6 +7,7 @@ const replaybtn = document.getElementById("replaybtn");
 
 let chosenPlayer
 let tries
+
 plyrbtns.forEach(choosePlayer);
 cellNumbers.forEach(fillCell)
 
@@ -17,29 +18,38 @@ function choosePlayer(plyrbtn, index){
         tries = 9;
     }) 
 }
+
 function fillCell(cellNumber){
+  
     cellNumber.addEventListener("click", function() {
         let currentPlayer = plyrbtns[chosenPlayer].innerText;
-        if(cellNumber.innerText === ""){
-            cellNumber.innerText = currentPlayer;
+        if(cellNumber.firstChild.innerText === ""){
+            cellNumber.firstChild.innerText = currentPlayer; 
             tries--     
-            plyrbtns.reverse();
+            
+        }
+        if(currentPlayer === "X"){
+          footer.innerText = "O's Turn"
+        }
+        if(currentPlayer === "O"){
+          footer.innerText = "X's Turn"
         }
         if(checkWin(currentPlayer)){
             judgement.style.display = "grid";
-            messagehead.innerText = currentPlayer + " is the winner!"; 
-            plyrbtns.sort();
+            messagehead.innerText = currentPlayer + " is the winner!";
+            footer.innerText = "";
         }
         if(tries == 0){
             judgement.style.display = "grid";
             messagehead.innerText = "Draw!"; 
-        }
-        
-        console.log(plyrbtns[1].innerText);
-        
+            footer.innerText = "";
+        } 
+        plyrbtns.reverse();
+        console.log(plyrbtns[0].innerText, plyrbtns[1].innerText);
     })
 }
 
+///sort or reverse letters based on tries!
 const WINNING_COMBINATIONS = [
     [0, 1, 2], [3, 4, 5],
     [6, 7, 8], [0, 3, 6],
@@ -50,22 +60,25 @@ const WINNING_COMBINATIONS = [
 function checkWin(player){
     return WINNING_COMBINATIONS.some(combination => {
         return combination.every(index => {
-            return cellNumbers[index].innerText.includes(player);
+            return cellNumbers[index].firstChild.innerText.includes(player);
         })
     })
 }
 
 replaybtn.addEventListener("click", function(){
+    if(plyrbtns[0].innerText === "X"){
+      console.log("reverse")
+      plyrbtns.reverse();
+      console.log(plyrbtns[0].innerText, plyrbtns[1].innerText);
+    }
     judgement.style.display= "none";
     overlay.style.display= "grid";
     cellNumbers.forEach(emptyCell);
-    plyrbtns.reverse();
     tries = 0;
 });
 
 function emptyCell(emptied){
-    emptied.innerText = " ";
-
+    emptied.firstChild.innerText = "";
 }
 
 

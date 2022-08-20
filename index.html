@@ -6,19 +6,16 @@
     <meta name="viewport" content="width=git, initial-scale=1.0">
     <title>tic-tac-toe</title>
     <link rel="stylesheet" href="./styles/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="container-fluid" data-whole>
+    <div class="container">
     
         <div id="overlay">
             <div class="chooseplayer">
                 <div class="head">Choose your player!</div>
-                <div class="center"><button type="button" class="plyrbtn">O</button></div>
-                <div class="center"><button type="button" class="plyrbtn">X</button></div>                
+                <button type="button" class="plyrbtn">O</button>
+                <button type="button" class="plyrbtn">X</button>       
             </div>
         </div>
 
@@ -29,24 +26,19 @@
             </div>
         </div>
 
-        <div class="row"  data-container>
-            <div class="col-xs-6 col-xs-offset-3" data-board>
-                <div class="row">
-                    <div class="col-xs-4 text-center panel-body" data-cell="1"></div>
-                    <div class="col-xs-4 text-center panel-body" data-cell="2"></div>
-                    <div class="col-xs-4 text-center panel-body" data-cell="3"></div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-4 text-center panel-body" data-cell="4"></div>
-                    <div class="col-xs-4 text-center panel-body" data-cell="5"></div>
-                    <div class="col-xs-4 text-center panel-body" data-cell="6"></div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-4 text-center panel-body" data-cell="7"></div>
-                    <div class="col-xs-4 text-center panel-body" data-cell="8"></div>
-                    <div class="col-xs-4 text-center panel-body" data-cell="9"></div>
+        <h2 class="lgfont" id="header">Tic Tac Toe</h2>
+        <div class="board">
+                    <div class="cell" data-cell="1"><span></span></div>
+                    <div class="cell brighter" data-cell="2"><span></span></div>
+                    <div class="cell" data-cell="3"><span></span></div>
+                    <div class="cell brighter" data-cell="4"><span></span></div>
+                    <div class="cell" data-cell="5"><span></span></div>
+                    <div class="cell brighter" data-cell="6"><span></span></div>
+                    <div class="cell" data-cell="7"><span></span></div>
+                    <div class="cell brighter" data-cell="8"><span></span></div>
+                    <div class="cell" data-cell="9"><span></span></div>
                  </div>
-            </div>
+          <h2 class="lgfont" id="footer"></h2>
         </div>
     </div>
 
